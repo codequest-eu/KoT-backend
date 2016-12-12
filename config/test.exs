@@ -13,7 +13,7 @@ config :logger, level: :warn
 config :kot_backend, KoTModule.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
-  password: "postgres",
+  password: "",
   database: "kot_backend_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox

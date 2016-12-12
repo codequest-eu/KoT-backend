@@ -36,7 +36,7 @@ config :phoenix, :stacktrace_depth, 20
 config :kot_backend, KoTModule.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
-  password: "postgres",
+  password: "",
   database: "kot_backend_dev",
   hostname: "localhost",
   pool_size: 10
