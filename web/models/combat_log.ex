@@ -1,5 +1,5 @@
-defmodule KoTModule.CombatLog do
-  use KoTModule.Web, :model
+defmodule Kot.CombatLog do
+  use Kot.Web, :model
 
   schema "combat_logs" do
     field :event_timestamp, Ecto.DateTime

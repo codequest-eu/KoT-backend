@@ -1,5 +1,5 @@
-defmodule KoTModule.Zone do
-  use KoTModule.Web, :model
+defmodule Kot.Zone do
+  use Kot.Web, :model
 
   schema "zones" do
     field :wow_id, :integer

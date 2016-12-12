@@ -1,4 +1,4 @@
-defmodule KoTModule.ChannelCase do
+defmodule Kot.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
@@ -20,22 +20,22 @@ defmodule KoTModule.ChannelCase do
       # Import conveniences for testing with channels
       use Phoenix.ChannelTest
 
-      alias KoTModule.Repo
+      alias Kot.Repo
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
 
 
       # The default endpoint for testing
-      @endpoint KoTModule.Endpoint
+      @endpoint Kot.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(KoTModule.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Kot.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(KoTModule.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(Kot.Repo, {:shared, self()})
     end
 
     :ok

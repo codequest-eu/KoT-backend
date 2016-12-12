@@ -1,7 +1,7 @@
-defmodule KoTModule.GameTableTest do
-  use KoTModule.ModelCase
+defmodule Kot.GameTableTest do
+  use Kot.ModelCase
 
-  alias KoTModule.GameTable
+  alias Kot.GameTable
 
   @valid_attrs %{server_wow_id: 42, zone_id: 42}
   @invalid_attrs %{}

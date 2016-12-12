@@ -1,7 +1,7 @@
-defmodule KoTModule.BossKillTest do
-  use KoTModule.ModelCase
+defmodule Kot.BossKillTest do
+  use Kot.ModelCase
 
-  alias KoTModule.BossKill
+  alias Kot.BossKill
 
   @valid_attrs %{boss_id: 42, game_session_id: 42, kill_time: %{day: 17, hour: 14, min: 0, month: 4, sec: 0, year: 2010}}
   @invalid_attrs %{}

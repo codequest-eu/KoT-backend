@@ -7,15 +7,15 @@ use Mix.Config
 
 # General application configuration
 config :kot_backend,
-  namespace: KoTModule,
-  ecto_repos: [KoTModule.Repo]
+  namespace: Kot,
+  ecto_repos: [Kot.Repo]
 
 # Configures the endpoint
-config :kot_backend, KoTModule.Endpoint,
+config :kot_backend, Kot.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "NWRWaxLq01mQGwwP3wrsKzv1+E1no6g17TTv+Pw8JyzMOfLIBNpxsowhBNm/DFH7",
-  render_errors: [view: KoTModule.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: KoTModule.PubSub,
+  render_errors: [view: Kot.ErrorView, accepts: ~w(html json)],
+  pubsub: [name: Kot.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger

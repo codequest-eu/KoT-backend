@@ -1,3 +1,3 @@
-defmodule KoTModule.PageViewTest do
-  use KoTModule.ConnCase, async: true
+defmodule Kot.PageViewTest do
+  use Kot.ConnCase, async: true
 end

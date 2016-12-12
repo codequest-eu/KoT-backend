@@ -1,5 +1,5 @@
-defmodule KoTModule.ErrorView do
-  use KoTModule.Web, :view
+defmodule Kot.ErrorView do
+  use Kot.Web, :view
 
   def render("404.html", _assigns) do
     "Page not found"

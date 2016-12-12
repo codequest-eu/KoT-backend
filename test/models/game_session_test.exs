@@ -1,7 +1,7 @@
-defmodule KoTModule.GameSessionTest do
-  use KoTModule.ModelCase
+defmodule Kot.GameSessionTest do
+  use Kot.ModelCase
 
-  alias KoTModule.GameSession
+  alias Kot.GameSession
 
   @valid_attrs %{pair_code: "some content", start_time: %{day: 17, hour: 14, min: 0, month: 4, sec: 0, year: 2010}}
   @invalid_attrs %{}

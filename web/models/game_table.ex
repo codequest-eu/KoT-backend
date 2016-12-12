@@ -1,5 +1,5 @@
-defmodule KoTModule.GameTable do
-  use KoTModule.Web, :model
+defmodule Kot.GameTable do
+  use Kot.Web, :model
 
   schema "game_tables" do
     field :zone_id, :integer

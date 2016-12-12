@@ -1,7 +1,7 @@
-defmodule KoTModule.Endpoint do
+defmodule Kot.Endpoint do
   use Phoenix.Endpoint, otp_app: :kot_backend
 
-  socket "/socket", KoTModule.UserSocket
+  socket "/socket", Kot.UserSocket
 
   # Serve at "/" the static files from "priv/static" directory.
   #
@@ -38,5 +38,5 @@ defmodule KoTModule.Endpoint do
     key: "_kot_backend_key",
     signing_salt: "RizodhKo"
 
-  plug KoTModule.Router
+  plug Kot.Router
 end

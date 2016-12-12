@@ -1,4 +1,4 @@
-defmodule KoTModule.Mixfile do
+defmodule Kot.Mixfile do
   use Mix.Project
 
   def project do
@@ -17,7 +17,7 @@ defmodule KoTModule.Mixfile do
   #
   # Type `mix help compile.app` for more information.
   def application do
-    [mod: {KoTModule, []},
+    [mod: {Kot, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
                     :phoenix_ecto, :postgrex]]
   end

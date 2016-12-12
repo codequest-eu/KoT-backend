@@ -1,3 +1,3 @@
-defmodule KoTModule.LayoutView do
-  use KoTModule.Web, :view
+defmodule Kot.LayoutView do
+  use Kot.Web, :view
 end

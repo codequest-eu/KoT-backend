@@ -1,9 +1,11 @@
-defmodule KoTModule.Player do
-  use KoTModule.Web, :model
+defmodule Kot.Player do
+  use Kot.Web, :model
 
   schema "players" do
     field :name, :string
     field :wow_id, :integer
+
+    has_many
 
     timestamps()
   end

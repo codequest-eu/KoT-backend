@@ -1,3 +1,3 @@
-defmodule KoTModule.LayoutViewTest do
-  use KoTModule.ConnCase, async: true
+defmodule Kot.LayoutViewTest do
+  use Kot.ConnCase, async: true
 end

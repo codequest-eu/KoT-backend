@@ -1,4 +1,4 @@
-defmodule KoTModule.Repo.Migrations.CreateBossKill do
+defmodule Kot.Repo.Migrations.CreateBossKill do
   use Ecto.Migration
 
   def change do

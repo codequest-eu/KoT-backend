@@ -1,4 +1,4 @@
-defmodule KoTModule.Repo.Migrations.CreateCombatLog do
+defmodule Kot.Repo.Migrations.CreateCombatLog do
   use Ecto.Migration
 
   def change do

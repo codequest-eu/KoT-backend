@@ -1,12 +1,12 @@
-defmodule KoTModule.Web do
+defmodule Kot.Web do
   @moduledoc """
   A module that keeps using definitions for controllers,
   views and so on.
 
   This can be used in your application as:
 
-      use KoTModule.Web, :controller
-      use KoTModule.Web, :view
+      use Kot.Web, :controller
+      use Kot.Web, :view
 
   The definitions below will be executed for every view,
   controller, etc, so keep them short and clean, focused
@@ -28,20 +28,20 @@ defmodule KoTModule.Web do
 
   def controller do
     quote do
-      use Phoenix.Controller, namespace: KoTModule
+      use Phoenix.Controller, namespace: Kot
 
-      alias KoTModule.Repo
+      alias Kot.Repo
       import Ecto
       import Ecto.Query
 
-      import KoTModule.Router.Helpers
-      import KoTModule.Gettext
+      import Kot.Router.Helpers
+      import Kot.Gettext
     end
   end
 
   def view do
     quote do
-      use Phoenix.View, root: "web/templates", namespace: KoTModule
+      use Phoenix.View, root: "web/templates", namespace: Kot
 
       # Import convenience functions from controllers
       import Phoenix.Controller, only: [get_csrf_token: 0, get_flash: 2, view_module: 1]
@@ -49,9 +49,9 @@ defmodule KoTModule.Web do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      import KoTModule.Router.Helpers
-      import KoTModule.ErrorHelpers
-      import KoTModule.Gettext
+      import Kot.Router.Helpers
+      import Kot.ErrorHelpers
+      import Kot.Gettext
     end
   end
 
@@ -65,10 +65,10 @@ defmodule KoTModule.Web do
     quote do
       use Phoenix.Channel
 
-      alias KoTModule.Repo
+      alias Kot.Repo
       import Ecto
       import Ecto.Query
-      import KoTModule.Gettext
+      import Kot.Gettext
     end
   end
 

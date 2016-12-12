@@ -1,4 +1,4 @@
-defmodule KoTModule.Repo.Migrations.CreatePlayer do
+defmodule Kot.Repo.Migrations.CreatePlayer do
   use Ecto.Migration
 
   def change do

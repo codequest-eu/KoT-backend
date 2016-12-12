@@ -1,5 +1,5 @@
-defmodule KoTModule.BossKill do
-  use KoTModule.Web, :model
+defmodule Kot.BossKill do
+  use Kot.Web, :model
 
   schema "boss_kills" do
     field :game_session_id, :integer

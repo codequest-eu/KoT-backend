@@ -1,4 +1,4 @@
-defmodule KoTModule.Repo.Migrations.CreateZone do
+defmodule Kot.Repo.Migrations.CreateZone do
   use Ecto.Migration
 
   def change do

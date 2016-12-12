@@ -1,7 +1,7 @@
-defmodule KoTModule.ZoneTest do
-  use KoTModule.ModelCase
+defmodule Kot.ZoneTest do
+  use Kot.ModelCase
 
-  alias KoTModule.Zone
+  alias Kot.Zone
 
   @valid_attrs %{wow_id: 42}
   @invalid_attrs %{}

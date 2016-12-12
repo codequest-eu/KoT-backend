@@ -1,4 +1,4 @@
-defmodule KoTModule.ModelCase do
+defmodule Kot.ModelCase do
   @moduledoc """
   This module defines the test case to be used by
   model tests.
@@ -16,20 +16,20 @@ defmodule KoTModule.ModelCase do
 
   using do
     quote do
-      alias KoTModule.Repo
+      alias Kot.Repo
 
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
-      import KoTModule.ModelCase
+      import Kot.ModelCase
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(KoTModule.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Kot.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(KoTModule.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(Kot.Repo, {:shared, self()})
     end
 
     :ok
@@ -59,7 +59,7 @@ defmodule KoTModule.ModelCase do
   """
   def errors_on(struct, data) do
     struct.__struct__.changeset(struct, data)
-    |> Ecto.Changeset.traverse_errors(&KoTModule.ErrorHelpers.translate_error/1)
+    |> Ecto.Changeset.traverse_errors(&Kot.ErrorHelpers.translate_error/1)
     |> Enum.flat_map(fn {key, errors} -> for msg <- errors, do: {key, msg} end)
   end
 end

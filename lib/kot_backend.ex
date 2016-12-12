@@ -1,4 +1,4 @@
-defmodule KoTModule do
+defmodule Kot do
   use Application
 
   # See http://elixir-lang.org/docs/stable/elixir/Application.html
@@ -9,23 +9,23 @@ defmodule KoTModule do
     # Define workers and child supervisors to be supervised
     children = [
       # Start the Ecto repository
-      supervisor(KoTModule.Repo, []),
+      supervisor(Kot.Repo, []),
       # Start the endpoint when the application starts
-      supervisor(KoTModule.Endpoint, []),
-      # Start your own worker by calling: KoTModule.Worker.start_link(arg1, arg2, arg3)
-      # worker(KoTModule.Worker, [arg1, arg2, arg3]),
+      supervisor(Kot.Endpoint, []),
+      # Start your own worker by calling: Kot.Worker.start_link(arg1, arg2, arg3)
+      # worker(Kot.Worker, [arg1, arg2, arg3]),
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: KoTModule.Supervisor]
+    opts = [strategy: :one_for_one, name: Kot.Supervisor]
     Supervisor.start_link(children, opts)
   end
 
   # Tell Phoenix to update the endpoint configuration
   # whenever the application is updated.
   def config_change(changed, _new, removed) do
-    KoTModule.Endpoint.config_change(changed, removed)
+    Kot.Endpoint.config_change(changed, removed)
     :ok
   end
 end

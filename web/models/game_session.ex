@@ -1,5 +1,5 @@
-defmodule KoTModule.GameSession do
-  use KoTModule.Web, :model
+defmodule Kot.GameSession do
+  use Kot.Web, :model
 
   schema "game_sessions" do
     field :start_time, Ecto.DateTime

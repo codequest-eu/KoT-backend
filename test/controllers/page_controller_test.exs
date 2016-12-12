@@ -1,5 +1,5 @@
-defmodule KoTModule.PageControllerTest do
-  use KoTModule.ConnCase
+defmodule Kot.PageControllerTest do
+  use Kot.ConnCase
 
   test "GET /", %{conn: conn} do
     conn = get conn, "/"

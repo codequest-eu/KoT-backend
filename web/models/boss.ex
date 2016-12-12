@@ -1,5 +1,5 @@
-defmodule KoTModule.Boss do
-  use KoTModule.Web, :model
+defmodule Kot.Boss do
+  use Kot.Web, :model
 
   schema "bosses" do
     field :zone_id, :integer

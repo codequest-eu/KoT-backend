@@ -1,7 +1,7 @@
-defmodule KoTModule.CombatLogTest do
-  use KoTModule.ModelCase
+defmodule Kot.CombatLogTest do
+  use Kot.ModelCase
 
-  alias KoTModule.CombatLog
+  alias Kot.CombatLog
 
   @valid_attrs %{damage: 42, event: "some content", event_timestamp: %{day: 17, hour: 14, min: 0, month: 4, sec: 0, year: 2010}, instance_wow_id: 42, npc_wow_id: 42, player_wow_id: 42, server_wow_id: 42, zone_wow_id: 42}
   @invalid_attrs %{}

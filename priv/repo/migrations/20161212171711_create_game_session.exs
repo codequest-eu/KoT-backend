@@ -1,4 +1,4 @@
-defmodule KoTModule.Repo.Migrations.CreateGameSession do
+defmodule Kot.Repo.Migrations.CreateGameSession do
   use Ecto.Migration
 
   def change do

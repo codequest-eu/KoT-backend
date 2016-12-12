@@ -1,4 +1,4 @@
-defmodule KoTModule.Repo.Migrations.CreateGameTable do
+defmodule Kot.Repo.Migrations.CreateGameTable do
   use Ecto.Migration
 
   def change do

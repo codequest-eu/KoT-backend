@@ -1,5 +1,5 @@
-defmodule KoTModule.Router do
-  use KoTModule.Web, :router
+defmodule Kot.Router do
+  use Kot.Web, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -13,14 +13,14 @@ defmodule KoTModule.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", KoTModule do
+  scope "/", Kot do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", KoTModule do
+  # scope "/api", Kot do
   #   pipe_through :api
   # end
 end

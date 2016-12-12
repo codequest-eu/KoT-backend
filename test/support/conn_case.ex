@@ -1,4 +1,4 @@
-defmodule KoTModule.ConnCase do
+defmodule Kot.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -20,23 +20,23 @@ defmodule KoTModule.ConnCase do
       # Import conveniences for testing with connections
       use Phoenix.ConnTest
 
-      alias KoTModule.Repo
+      alias Kot.Repo
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
 
-      import KoTModule.Router.Helpers
+      import Kot.Router.Helpers
 
       # The default endpoint for testing
-      @endpoint KoTModule.Endpoint
+      @endpoint Kot.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(KoTModule.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Kot.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(KoTModule.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(Kot.Repo, {:shared, self()})
     end
 
     {:ok, conn: Phoenix.ConnTest.build_conn()}

@@ -1,7 +1,7 @@
-defmodule KoTModule.BossTest do
-  use KoTModule.ModelCase
+defmodule Kot.BossTest do
+  use Kot.ModelCase
 
-  alias KoTModule.Boss
+  alias Kot.Boss
 
   @valid_attrs %{npc_wow_id: 42, zone_id: 42}
   @invalid_attrs %{}

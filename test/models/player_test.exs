@@ -1,7 +1,7 @@
-defmodule KoTModule.PlayerTest do
-  use KoTModule.ModelCase
+defmodule Kot.PlayerTest do
+  use Kot.ModelCase
 
-  alias KoTModule.Player
+  alias Kot.Player
 
   @valid_attrs %{name: "some content", wow_id: 42}
   @invalid_attrs %{}

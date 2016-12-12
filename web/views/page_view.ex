@@ -1,3 +1,3 @@
-defmodule KoTModule.PageView do
-  use KoTModule.Web, :view
+defmodule Kot.PageView do
+  use Kot.Web, :view
 end
