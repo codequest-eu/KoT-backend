@@ -5,7 +5,7 @@ defmodule Kot.Player do
     field :name, :string
     field :wow_id, :integer
 
-    has_many
+    has_many :game_sessions. Kot.GameSession
 
     timestamps()
   end
