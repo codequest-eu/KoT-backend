@@ -5,7 +5,8 @@ defmodule Kot.Player do
     field :name, :string
     field :wow_id, :integer
 
-    has_many :game_sessions. Kot.GameSession
+    many_to_many :game_sessions, Kot.GameSession,
+                 join_through: "player_game_sessions"
 
     timestamps()
   end

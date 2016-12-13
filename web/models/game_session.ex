@@ -5,6 +5,7 @@ defmodule Kot.GameSession do
     field :start_time, Ecto.DateTime
     field :pair_code, :string
 
+
     timestamps()
   end
 
