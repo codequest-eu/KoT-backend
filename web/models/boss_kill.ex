@@ -2,8 +2,6 @@ defmodule Kot.BossKill do
   use Kot.Web, :model
 
   schema "boss_kills" do
-    field :game_session_id, :integer
-    field :boss_id, :integer
     field :kill_time, Ecto.DateTime
 
     belongs_to :game_session, Kot.GameSession

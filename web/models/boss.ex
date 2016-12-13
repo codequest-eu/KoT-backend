@@ -2,7 +2,6 @@ defmodule Kot.Boss do
   use Kot.Web, :model
 
   schema "bosses" do
-    field :zone_id, :integer
     field :npc_wow_id, :integer
 
     belongs_to :zone, Kot.Zone
