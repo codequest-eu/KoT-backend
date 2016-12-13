@@ -2,8 +2,10 @@ defmodule Kot.GameTable do
   use Kot.Web, :model
 
   schema "game_tables" do
-    field :zone_id, :integer
     field :server_wow_id, :integer
+
+    belongs_to :zone, Kot.Zone
+    has_many :game_sessions, Kot.GameSession
 
     timestamps()
   end

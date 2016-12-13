@@ -6,7 +6,7 @@ defmodule Kot.Player do
     field :wow_id, :integer
 
     many_to_many :game_sessions, Kot.GameSession,
-                 join_through: "player_game_sessions"
+                 join_through: Kot.PlayerGameSession
 
     timestamps()
   end
