@@ -8,10 +8,8 @@ defmodule Kot.Router do
   scope "/", Kot do
     pipe_through :api
 
-    scope "/v1", V1, as: :v1 do
-      resources "/game_sessions", GameSessionsController, only: [:create] do
-
-      end
+    resources "/game_sessions", GameSessionController, only: [:create, :index] do
+      # put "/:pair_code/start", GameSessionController
     end
   end
 end
