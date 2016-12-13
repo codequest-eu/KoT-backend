@@ -5,6 +5,12 @@ defmodule Kot.GameSession do
     field :start_time, Ecto.DateTime
     field :pair_code, :string
 
+    belongs_to :game_table, Kot.GameTable
+    has_many :combat_logs, Kot.CombatLog
+    has_many :boss_kills, Kot.BossKill
+    many_to_many :players, Kot.Player,
+                 join_through: "player_game_sessions"
+
 
     timestamps()
   end

@@ -5,6 +5,9 @@ defmodule Kot.Boss do
     field :zone_id, :integer
     field :npc_wow_id, :integer
 
+    belongs_to :zone, Kot.Zone
+    has_many :boss_kills, Kot.BossKill
+
     timestamps()
   end
 

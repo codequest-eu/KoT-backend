@@ -11,6 +11,8 @@ defmodule Kot.CombatLog do
     field :player_wow_id, :integer
     field :damage, :integer
 
+    belongs_to :game_session, Kot.GameSession
+
     timestamps()
   end
 

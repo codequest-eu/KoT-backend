@@ -4,6 +4,9 @@ defmodule Kot.Zone do
   schema "zones" do
     field :wow_id, :integer
 
+    has_many :game_tables, Kot.GameTable
+    has_many :bosses, Kot.Boss
+
     timestamps()
   end
 

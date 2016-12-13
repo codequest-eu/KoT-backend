@@ -6,6 +6,9 @@ defmodule Kot.BossKill do
     field :boss_id, :integer
     field :kill_time, Ecto.DateTime
 
+    belongs_to :game_session, Kot.GameSession
+    belongs_to :boss, Kot.Boss
+
     timestamps()
   end
 
