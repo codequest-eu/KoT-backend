@@ -3,6 +3,7 @@ defmodule Kot.GameSessionController do
 
   alias Kot.Repo
   alias Kot.PlayerGameSession
+  alias Kot.GameSession
 
   def pair(conn, params) do
     player_game_session = Repo.get_by(PlayerGameSession, pair_code: params["pair_code"])
@@ -18,9 +19,10 @@ defmodule Kot.GameSessionController do
 
   def start(conn, params) do
     player_game_session = Repo.get_by(PlayerGameSession, pair_code: params["pair_code"])
+      |> Repo.preload([:game_session])
     start_time = params["start_time"] |> Timex.parse!("%m/%d %H:%M:%S.%f", :strftime) |> Ecto.DateTime.cast!
-    pgs_changeset = PlayerGameSession.changeset(player_game_session, %{start_time: start_time, instance_id: params["instance_id"]})
-    Repo.update! pgs_changeset
+    gs_changeset = GameSession.changeset(player_game_session, %{start_time: start_time, instance_id: params["instance_id"]})
+    Repo.update! gs_changeset
 
     text(conn, "ok")
   end

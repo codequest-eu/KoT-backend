@@ -20,6 +20,5 @@ defmodule Kot.GameSession do
   def changeset(struct, params \\ %{}) do
     struct
     |> cast(params, [:start_time])
-    # |> validate_required([:start_time, :pair_code])
   end
 end
