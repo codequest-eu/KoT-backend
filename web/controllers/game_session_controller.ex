@@ -5,7 +5,9 @@ defmodule Kot.GameSessionController do
   alias Kot.PlayerGameSession
   alias Kot.GameSession
 
+
   import Kot.Fetchers
+  import Kot.DateParser
 
   def pair(conn, params) do
     player_game_session =
@@ -25,10 +27,7 @@ defmodule Kot.GameSessionController do
       fetch_pgs(params["pair_code"], [:game_session])
       |> Map.fetch(:game_session)
 
-    start_time =
-      params["start_time"]
-      |> Timex.parse!("%m/%d %H:%M:%S.%f", :strftime)
-      |> Ecto.DateTime.cast!
+    start_time = params["start_time"] |> to_ecto_datetime
 
     gs_changeset = GameSession.changeset(game_session, %{start_time: start_time, instance_id: params["instance_id"]})
     Repo.update! gs_changeset
