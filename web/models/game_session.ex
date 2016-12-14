@@ -3,6 +3,8 @@ defmodule Kot.GameSession do
 
   schema "game_sessions" do
     field :start_time, Ecto.DateTime
+    field :complete_time, Ecto.DateTime
+    field :instance_id, :integer
 
     belongs_to :game_table, Kot.GameTable
     has_many :combat_logs, Kot.CombatLog
@@ -19,6 +21,6 @@ defmodule Kot.GameSession do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:start_time])
+    |> cast(params, [:start_time, :complete_time, :instance_id])
   end
 end
