@@ -5,11 +5,12 @@ defmodule Kot.GameSessionController do
   alias Kot.PlayerGameSession
   alias Kot.GameSession
 
+  import Kot.Fetchers
+
   def pair(conn, params) do
     player_game_session =
-      PlayerGameSession
-        |> Repo.get_by(pair_code: params["pair_code"])
-        |> Repo.preload([game_session: [game_table: [zone: [:bosses]]]])
+      fetch_pgs(params["pair_code"], [game_session: [game_table: [zone: [:bosses]]]])
+
     zone = player_game_session.game_session.game_table.zone
     boss_ids = Enum.map(zone.bosses, fn(boss) -> boss.id end)
 
@@ -21,15 +22,14 @@ defmodule Kot.GameSessionController do
 
   def start(conn, params) do
     {:ok, game_session } =
-      PlayerGameSession
-        |> Repo.get_by(pair_code: params["pair_code"])
-        |> Repo.preload([:game_session])
-        |> Map.fetch(:game_session)
+      fetch_pgs(params["pair_code"], [:game_session])
+      |> Map.fetch(:game_session)
 
     start_time =
       params["start_time"]
-        |> Timex.parse!("%m/%d %H:%M:%S.%f", :strftime)
-        |> Ecto.DateTime.cast!
+      |> Timex.parse!("%m/%d %H:%M:%S.%f", :strftime)
+      |> Ecto.DateTime.cast!
+
     gs_changeset = GameSession.changeset(game_session, %{start_time: start_time, instance_id: params["instance_id"]})
     Repo.update! gs_changeset
 
