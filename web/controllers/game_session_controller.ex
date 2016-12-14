@@ -4,13 +4,6 @@ defmodule Kot.GameSessionController do
   alias Kot.Repo
   alias Kot.PlayerGameSession
 
-  def index(conn, _params) do
-    game_sessions = [%{title: "foo"}, %{title: "bar"}]
-
-    render(conn, "index.json", game_sessions: game_sessions)
-  end
-
-
   def pair(conn, params) do
     player_game_session = Repo.get_by(PlayerGameSession, pair_code: params["pair_code"])
       |> Repo.preload([game_session: [game_table: [zone: [:bosses]]]])
@@ -23,23 +16,12 @@ defmodule Kot.GameSessionController do
     render(conn, "pair.json", zone_id: zone.id, boss_ids: boss_ids)
   end
 
-  # def create(conn, _params) do
-  #   IEx.pry
+  def start(conn, params) do
+    player_game_session = Repo.get_by(PlayerGameSession, pair_code: params["pair_code"])
+    start_time = params["start_time"] |> Timex.parse!("%m/%d %H:%M:%S.%f", :strftime) |> Ecto.DateTime.cast!
+    pgs_changeset = PlayerGameSession.changeset(player_game_session, %{start_time: start_time, instance_id: params["instance_id"]})
+    Repo.update! pgs_changeset
 
-    # changeset = Todo.changeset(%Todo{}, todo_params)
-
-    # case Repo.insert(changeset) do
-
-      # {:error, changeset} ->
-      #   conn
-      #   |> put_status(:unprocessable_entity)
-      #   |> render(TodoApi.ChangesetView, "error.json", changeset: changeset)
-    # end
-
-    # {:ok, nil} ->
-    #   conn
-    #   |> put_status(:created)
-    #   |> put_resp_header("location", nil)
-    #   |> render("show.json", game_session: 'a')
-  # end
+    text(conn, "ok")
+  end
 end
