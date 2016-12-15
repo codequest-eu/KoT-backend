@@ -7,7 +7,6 @@ defmodule Kot.GameSessionController do
   alias Kot.GameTable
   alias Kot.Player
   alias Kot.Fetchers
-  alias Kot.DateParser
   alias Kot.Boss
   alias Kot.Zone
   alias Kot.Player
