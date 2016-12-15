@@ -2,7 +2,8 @@ defmodule Kot.Boss do
   use Kot.Web, :model
 
   schema "bosses" do
-    field :npc_wow_id, :integer
+    field :wow_id, :integer
+    field :name, :string
 
     belongs_to :zone, Kot.Zone
     has_many :boss_kills, Kot.BossKill
@@ -15,7 +16,7 @@ defmodule Kot.Boss do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:zone_id, :npc_wow_id])
-    |> validate_required([:zone_id, :npc_wow_id])
+    |> cast(params, [:zone_id, :wow_id, :name])
+    |> validate_required([:zone_id, :name])
   end
 end

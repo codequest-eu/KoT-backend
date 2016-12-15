@@ -3,6 +3,7 @@ defmodule Kot.Zone do
 
   schema "zones" do
     field :wow_id, :integer
+    field :name, :string, null: false
 
     has_many :game_tables, Kot.GameTable
     has_many :bosses, Kot.Boss
@@ -15,7 +16,7 @@ defmodule Kot.Zone do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:wow_id])
-    |> validate_required([:wow_id])
+    |> cast(params, [:wow_id, :name])
+    |> validate_required([:wow_id, :name])
   end
 end

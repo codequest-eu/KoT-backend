@@ -16,6 +16,6 @@ defmodule Kot.GameTable do
   def changeset(struct, params \\ %{}) do
     struct
     |> cast(params, [:zone_id, :server_wow_id])
-    |> validate_required([:zone_id, :server_wow_id])
+    |> validate_required([:zone_id])
   end
 end
