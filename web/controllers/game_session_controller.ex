@@ -22,8 +22,6 @@ defmodule Kot.GameSessionController do
     game_session = Repo.insert!(game_session_changeset)
     player_game_session_changeset = PlayerGameSession.changeset(%PlayerGameSession{},
       %{pair_code: SecureRandom.urlsafe_base64, status: "unpaired", game_session_id: game_session.id})
-    IO.inspect "*****************"
-    IO.inspect player_game_session_changeset
     Repo.insert!(player_game_session_changeset)
 
     render(conn, "game_session_create.json", game_table: game_table, zone: zone,
@@ -34,24 +32,22 @@ defmodule Kot.GameSessionController do
     player_game_session =
       Fetchers.fetch_pgs(params["pair_code"], [game_session: [game_table: [zone: [:bosses]]]])
 
-    IO.inspect player_game_session
     zone = player_game_session.game_session.game_table.zone
     boss_wow_ids = Enum.map(zone.bosses, fn(boss) -> boss.wow_id end)
 
-    pgs_changeset = PlayerGameSession.changeset(player_game_session, %{paired: true})
+    pgs_changeset = PlayerGameSession.changeset(player_game_session, %{status: "paired"})
     Repo.update! pgs_changeset
 
     render(conn, "pair.json", zone_wow_id: zone.wow_id, boss_wow_ids: boss_wow_ids)
   end
 
   def start(conn, params) do
-    {:ok, game_session } =
-      Fetchers.fetch_pgs(params["pair_code"], [:game_session])
-      |> Map.fetch(:game_session)
+    player_game_session = Fetchers.fetch_pgs(params["pair_code"], [:game_session])
+    pgs_changeset = PlayerGameSession.changeset(player_game_session, %{status: "started"})
+    Repo.update! pgs_changeset
 
     start_time = params["start_time"] |> DateParser.to_ecto_datetime
-
-    gs_changeset = GameSession.changeset(game_session, %{start_time: start_time, instance_id: params["instance_id"]})
+    gs_changeset = GameSession.changeset(player_game_session.game_session, %{start_time: start_time, instance_id: params["instance_id"]})
     Repo.update! gs_changeset
 
     text(conn, "ok")

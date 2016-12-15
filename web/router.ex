@@ -17,7 +17,7 @@ defmodule Kot.Router do
 
     #FRONTEND
     resources "/game_sessions/", GameSessionController, only: [:create]
-    get "/player_game_sessions/:id/status", GameSessionController, :status
+    get "/player_game_sessions/:id/status", PlayerGameSessionController, :status
     #FRONTEND END
 
   end
