@@ -38,5 +38,6 @@ defmodule Kot.Endpoint do
     key: "_kot_backend_key",
     signing_salt: "RizodhKo"
 
+  plug CORSPlug
   plug Kot.Router
 end

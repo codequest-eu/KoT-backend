@@ -15,5 +15,9 @@ defmodule Kot.Router do
     #DESKTOP END
 
 
+    #FRONTEND
+    resources "/game_sessions/", GameSessionController, only: [:create, :index]
+    #FRONTEND END
+
   end
 end

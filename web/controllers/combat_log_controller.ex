@@ -26,7 +26,7 @@ defmodule Kot.CombatLogController do
       if combat_log.event == "UNIT_DIED" do
         IO.inspect "********** UNIT DIED"
         boss_kill_changeset = BossKill.changeset(%BossKill{}, %{game_session_id: game_session.id, boss_id: combat_log.npc_wow_id, kill_time: time} )
-        boss_kill = Repo.insert!(boss_kill_changeset)
+        Repo.insert!(boss_kill_changeset)
 
         boss_kill_count = Kot.Repo.all(Kot.BossKill, id: game_session.id) |> Enum.count
 
