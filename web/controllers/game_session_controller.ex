@@ -9,24 +9,20 @@ defmodule Kot.GameSessionController do
   alias Kot.Fetchers
   alias Kot.DateParser
   alias Kot.Boss
-
-  def index(conn, params) do
-    text(conn, "Hello Maniek. Wyslales mi: #{}")
-  end
+  alias Kot.Zone
+  alias Kot.Player
 
   def create(conn, params) do
     player = Repo.get_by(Player, name: params["user_name"])
-    zone = Repo.get_by(Zone, params["zone_id"])
+    zone = Repo.get(Zone, params["zone_id"])
     game_table_changeset = GameTable.changeset(%GameTable{}, %{zone_id: zone.id})
     game_table = Repo.insert!(game_table_changeset)
     game_session_changeset = GameSession.changeset(%GameSession{}, %{game_table_id: game_table.id})
     game_session = Repo.insert!(game_session_changeset)
     bosses = Repo.all(Boss, zone_id: zone.id)
 
-
-
-
-    text(conn, "ok")
+    render(conn, "game_session_create.json", game_table: game_table, zone: zone,
+     bosses: bosses, game_session: game_session, players: [player])
   end
 
   def pair(conn, params) do
