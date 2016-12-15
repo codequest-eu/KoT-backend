@@ -22,6 +22,6 @@ defmodule Kot.GameSession do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:start_time, :complete_time, :instance_id, :boss_count])
+    |> cast(params, [:start_time, :complete_time, :instance_id, :boss_count, :game_table_id])
   end
 end

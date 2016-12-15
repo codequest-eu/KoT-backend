@@ -6,6 +6,9 @@ defmodule Kot.CombatLogValidator do
     event_timestamp = combat_log_data["event_timestamp"]
     player_wow_id = combat_log_data["player_wow_id"]
 
-    !Repo.get_by(CombatLog, event_timestamp: event_timestamp, player_wow_id: player_wow_id)
+    val = !Repo.get_by(CombatLog, event_timestamp: event_timestamp, player_wow_id: player_wow_id)
+    IO.inspect "VALIDATOR"
+    IO.inspect val
+    val
   end
 end

@@ -14,7 +14,7 @@ defmodule Kot.GameSessionView do
     }
   end
 
-  def render("pair.json", %{zone_id: zone_id, boss_ids: boss_ids}) do
-    %{zone_id: zone_id, boss_ids: boss_ids}
+  def render("pair.json", %{zone_wow_id: zone_wow_id, boss_wow_ids: boss_wow_ids}) do
+    %{zone_wow_id: zone_wow_id, boss_wow_ids: boss_wow_ids}
   end
 end

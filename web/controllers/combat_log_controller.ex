@@ -37,7 +37,9 @@ defmodule Kot.CombatLogController do
           all_bosses_killed = true
         end
       end
+      render(conn, "zone_status.json", all_bosses_killed: all_bosses_killed)
+    else
+      text(conn, "combat_log not unique: -> change wow_player_id, event_timestamp")
     end
-    render(conn, "zone_status.json", all_bosses_killed: all_bosses_killed)
   end
 end

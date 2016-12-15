@@ -3,7 +3,7 @@ defmodule Kot.PlayerGameSession do
 
   schema "player_game_sessions" do
     field :pair_code, :string
-    field :paired, :boolean, default: false
+    field :status, :string, default: false
 
     belongs_to :player, Kot.Player
     belongs_to :game_session, Kot.GameSession
@@ -16,6 +16,6 @@ defmodule Kot.PlayerGameSession do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:pair_code, :paired])
+    |> cast(params, [:pair_code, :status, :game_session_id])
   end
 end
