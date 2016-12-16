@@ -14,11 +14,10 @@ defmodule Kot.Router do
     resources "/combat_logs", CombatLogController, only: [:create]
     #DESKTOP END
 
-
     #FRONTEND
     resources "/game_sessions/", GameSessionController, only: [:create]
+    resources "/game_tables/", GameTableController, only: [:index]
     get "/player_game_sessions/:id/status", PlayerGameSessionController, :status
     #FRONTEND END
-
   end
 end

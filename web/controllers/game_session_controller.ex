@@ -21,11 +21,11 @@ defmodule Kot.GameSessionController do
     game_session_changeset = GameSession.changeset(%GameSession{}, %{game_table_id: game_table.id, boss_count: bosses |> Enum.count})
     game_session = Repo.insert!(game_session_changeset)
     player_game_session_changeset = PlayerGameSession.changeset(%PlayerGameSession{},
-      %{pair_code: SecureRandom.urlsafe_base64, status: "unpaired", game_session_id: game_session.id})
-    Repo.insert!(player_game_session_changeset)
+      %{pair_code: SecureRandom.urlsafe_base64, status: "unpaired", game_session_id: game_session.id, player_id: player.id})
+    pgs = Repo.insert!(player_game_session_changeset)
 
     render(conn, "game_session_create.json", game_table: game_table, zone: zone,
-     bosses: bosses, game_session: game_session, players: [player])
+     bosses: bosses, game_session: game_session, players: [player], pair_code: pgs.pair_code)
   end
 
   def pair(conn, params) do
