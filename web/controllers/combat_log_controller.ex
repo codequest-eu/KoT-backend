@@ -34,6 +34,8 @@ defmodule Kot.CombatLogController do
           IO.inspect "********** ALL BOSS KILL"
           game_session_changeset = GameSession.changeset(game_session, %{complete_time: time})
           Repo.update!(game_session_changeset)
+
+
           all_bosses_killed = true
         end
       end

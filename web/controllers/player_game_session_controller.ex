@@ -6,7 +6,6 @@ defmodule Kot.PlayerGameSessionController do
 
   def status(conn, params) do
     player_game_session = Repo.get(PlayerGameSession, params["id"])
-    IO.inspect player_game_session
     render(conn, "status.json", status: player_game_session.status)
   end
 end

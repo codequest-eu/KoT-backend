@@ -6,6 +6,7 @@ defmodule Kot.GameSession do
     field :complete_time, Ecto.DateTime
     field :instance_id, :integer
     field :boss_count, :integer
+    field :first_npc_wow_ids, {:array, :integer}
 
     belongs_to :game_table, Kot.GameTable
     has_many :combat_logs, Kot.CombatLog
@@ -22,6 +23,7 @@ defmodule Kot.GameSession do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:start_time, :complete_time, :instance_id, :boss_count, :game_table_id])
+    |> cast(params, [:start_time, :complete_time, :instance_id, :boss_count,
+      :game_table_id, :first_npc_wow_ids])
   end
 end
