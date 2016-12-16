@@ -32,13 +32,15 @@ defmodule Kot.GameSessionController do
     player_game_session =
       Fetchers.fetch_pgs(params["pair_code"], [game_session: [game_table: [zone: [:bosses]]]])
 
-    zone = player_game_session.game_session.game_table.zone
-    boss_wow_ids = Enum.map(zone.bosses, fn(boss) -> boss.wow_id end)
+    bosses = player_game_session.game_session.game_table.zone.bosses
+    boss_wow_ids = Enum.map(bosses, fn(boss) -> boss.wow_id end)
 
     pgs_changeset = PlayerGameSession.changeset(player_game_session, %{status: "paired"})
     Repo.update! pgs_changeset
 
-    render(conn, "pair.json", zone_wow_id: zone.wow_id, boss_wow_ids: boss_wow_ids)
+    render(conn, "pair.json", boss_wow_ids: boss_wow_ids,
+      first_npc_wow_ids: player_game_session.game_session.first_npc_wow_ids,
+      instance_id: player_game_session.game_session.instance_id)
   end
 
   def start(conn, params) do
